@@ -1,14 +1,16 @@
-web:
-  build: .
-  command: python -u app.py
-  ports:
-    - "7800:7800"
-  volumes:
-    - .:/todo
-  links:
-    - db
-db:
-  image: 'mongo:latest'
-  command: mongod --port 27017
-  ports:
-      - '27017:27017'
+version: '3'
+services:
+  db:
+    image: mongo
+    ports:
+      - "27017:27017"
+  web:
+    build: .
+    ports:
+      - "5001:5001"
+    links:
+      - db
+    depends_on:
+      - db
+        
+       

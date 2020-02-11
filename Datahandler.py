@@ -1,8 +1,8 @@
-import pymongo 
+import pymongo ,os
 from pymongo import MongoClient
 
-cluster = MongoClient("localhost:27017")
-db= cluster["book"]
+cluster = MongoClient(host='db', port=27017)
+db= cluster['book']
 
 
 def insert_data(data):

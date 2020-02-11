@@ -1,5 +1,4 @@
 flask
-pylint-flask
 PyJWT
 pymongo
 

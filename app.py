@@ -25,6 +25,8 @@ def token_required(f):
 @token_required
 def welcomerequest():
     result = datahandler.get_all_data()
+    if result is not True:
+        return Response(json.dumps('try adding data'),status = 400, mimetype = 'application/json') 
     return jsonify(result)
 
 
@@ -150,4 +152,5 @@ def delete_books_by_id(isbn):
 
 
 
-app.run(port=7800)
+if __name__ == "__main__":
+	app.run(host='0.0.0.0',port=5001,debug=True)
